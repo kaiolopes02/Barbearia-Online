@@ -1,0 +1,18 @@
+:root {
+    --primary: #1a1a1a;
+    --bg-body: #d4a373;
+    --bg-app: #ffffff;
+    --text-main: #1a1a1a;
+    --text-gray: #7f8c8d;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+
+body { 
+    background-color: var(--bg-body); 
+    display: flex; 
+    justify-content: center; /* Centraliza o app na tela do PC */
+    align-items: center; 
+    height: 100vh; 
+    margin: 0;
+}

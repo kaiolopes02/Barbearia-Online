@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Barber - Agendamento</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <section id="screen-welcome" class="screen visible">
+            <div class="welcome-content">
+                <div class="brand-section">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2821/2821012.png" width="70" alt="Logo">
+                    <h1>THE BARBER</h1>
+                    <p class="tagline">Get the Best Haircut Here</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-item">
+                        <span>📍</span>
+                        <p>Rua das Barbearias, 123 - Centro</p>
+                    </div>
+                    <div class="info-item">
+                        <span>🕒</span>
+                        <p>Seg a Sáb: 09h às 20h</p>
+                    </div>
+                    <div class="info-item">
+                        <span>📞</span>
+                        <p>(11) 99999-9999</p>
+                    </div>
+                </div>
+
+                <button class="btn-main" onclick="showScreen('screen-barbers')">Book Now</button>
+            </div>
+        </section>
+
+        <section id="screen-barbers" class="screen">
+            <header class="header">
+                <button class="back-link" onclick="showScreen('screen-welcome')">←</button>
+                <h2>Available barbers</h2>
+            </header>
+            <div class="card" onclick="selectBarber('Tom Marelli')">
+                <img src="https://i.pravatar.cc/100?u=1" alt="Tom">
+                <div class="card-info"><h4>Tom Marelli</h4><p>⭐ 4.9 (120 reviews)</p></div>
+                <span class="price-tag">$45</span>
+            </div>
+            <div class="card" onclick="selectBarber('Dean Scott')">
+                <img src="https://i.pravatar.cc/100?u=2" alt="Dean">
+                <div class="card-info"><h4>Dean Scott</h4><p>⭐ 4.8 (215 reviews)</p></div>
+                <span class="price-tag">$65</span>
+            </div>
+        </section>
+
+        <section id="screen-schedule" class="screen">
+            <header class="header">
+                <button class="back-link" onclick="showScreen('screen-barbers')">←</button>
+                <h2>Your order</h2>
+            </header>
+            <div class="form-container">
+                <div class="input-field">
+                    <label for="input-name">Nome do Cliente</label>
+                    <input type="text" id="input-name" placeholder="Ex: João Silva">
+                </div>
+                <div class="input-field">
+                    <label for="input-data">Data da Reserva</label>
+                    <input type="date" id="input-data" onchange="updateAvailableSlots()">
+                </div>
+                <div class="input-field">
+                    <label for="input-servico">Tipo de Corte</label>
+                    <select id="input-servico">
+                        <option value="Haircut">Regular Haircut</option>
+                        <option value="Beard">Beard Trimming</option>
+                        <option value="Combo">Premium Combo</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <label>Horários Disponíveis</label>
+                    <div class="time-slots" id="time-slots-container"></div>
+                </div>
+            </div>
+            <button class="btn-main" onclick="finish()">Confirm Order</button>
+        </section>
+    </div>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/scheduler.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
