@@ -1,18 +1,59 @@
+/* ================================================
+   BASE.CSS – Variáveis, Reset, Corpo
+   ================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+
 :root {
-    --primary: #1a1a1a;
-    --bg-body: #d4a373;
-    --bg-app: #ffffff;
-    --text-main: #1a1a1a;
-    --text-gray: #7f8c8d;
+    /* Paleta */
+    --gold:          #c9a84c;
+    --gold-light:    #e8c87a;
+    --gold-dim:      rgba(201,168,76,0.15);
+    --bg-body:       #1a1008;
+    --bg-app:        #0e0e0e;
+    --bg-surface:    #181818;
+    --bg-elevated:   #222222;
+    --border:        rgba(255,255,255,0.07);
+    --border-gold:   rgba(201,168,76,0.35);
+    --text-primary:  #f2ede4;
+    --text-secondary:#a09880;
+    --text-disabled: #555;
+    --danger:        #e05252;
+    --success:       #52c47a;
+
+    /* Tipografia */
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body:    'DM Sans', sans-serif;
+
+    /* Espaçamentos */
+    --radius-sm:  10px;
+    --radius-md:  16px;
+    --radius-lg:  22px;
+    --radius-xl:  36px;
+
+    /* Sombras */
+    --shadow-gold: 0 0 30px rgba(201,168,76,0.12);
+    --shadow-card: 0 4px 20px rgba(0,0,0,0.4);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-
-body { 
-    background-color: var(--bg-body); 
-    display: flex; 
-    justify-content: center; /* Centraliza o app na tela do PC */
-    align-items: center; 
-    height: 100vh; 
+*, *::before, *::after {
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-body);
+    background-image:
+        radial-gradient(ellipse 80% 60% at 50% -20%, rgba(201,168,76,0.18) 0%, transparent 70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 16px;
 }

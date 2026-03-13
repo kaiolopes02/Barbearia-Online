@@ -3,91 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Barber - Agendamento</title>
+    <title>The Barber</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/components.css">
 </head>
 <body>
     <div class="app-container">
-        
+
+        <!-- ===== TELA 1: WELCOME ===== -->
         <section id="screen-welcome" class="screen visible">
+            <div class="noise-overlay"></div>
             <div class="welcome-content">
-                <div class="brand-section">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2821/2821012.png" width="70" alt="Logo">
-                    <h1>THE BARBER</h1>
-                    <p class="tagline">Get the Best Haircut Here</p>
+                <div class="logo-area">
+                    <div class="logo-icon">✦</div>
+                    <h1 class="brand-title">THE<br>BARBER</h1>
+                    <p class="brand-tagline">Barbearia Premium</p>
                 </div>
 
                 <div class="info-card">
                     <div class="info-item">
-                        <span>📍</span>
-                        <p>Rua das Barbearias, 123 - Centro</p>
+                        <span class="info-icon">◆</span>
+                        <span>Seg – Sáb &nbsp;·&nbsp; 09h às 18h</span>
                     </div>
                     <div class="info-item">
-                        <span>🕒</span>
-                        <p>Seg a Sáb: 09h às 20h</p>
+                        <span class="info-icon">◆</span>
+                        <span>Rua das Flores, 142 – Centro</span>
                     </div>
                     <div class="info-item">
-                        <span>📞</span>
-                        <p>(11) 99999-9999</p>
+                        <span class="info-icon">◆</span>
+                        <span>(11) 99999-0000</span>
                     </div>
                 </div>
 
-                <button class="btn-main" onclick="showScreen('screen-barbers')">Book Now</button>
+                <button class="btn-main" onclick="showScreen('screen-schedule')">
+                    Agendar Agora
+                </button>
             </div>
         </section>
 
-        <section id="screen-barbers" class="screen">
-            <header class="header">
-                <button class="back-link" onclick="showScreen('screen-welcome')">←</button>
-                <h2>Available barbers</h2>
-            </header>
-            <div class="card" onclick="selectBarber('Tom Marelli')">
-                <img src="https://i.pravatar.cc/100?u=1" alt="Tom">
-                <div class="card-info"><h4>Tom Marelli</h4><p>⭐ 4.9 (120 reviews)</p></div>
-                <span class="price-tag">$45</span>
-            </div>
-            <div class="card" onclick="selectBarber('Dean Scott')">
-                <img src="https://i.pravatar.cc/100?u=2" alt="Dean">
-                <div class="card-info"><h4>Dean Scott</h4><p>⭐ 4.8 (215 reviews)</p></div>
-                <span class="price-tag">$65</span>
-            </div>
-        </section>
-
+        <!-- ===== TELA 2: AGENDAMENTO ===== -->
         <section id="screen-schedule" class="screen">
             <header class="header">
-                <button class="back-link" onclick="showScreen('screen-barbers')">←</button>
-                <h2>Your order</h2>
+                <button class="back-link" onclick="showScreen('screen-welcome')" aria-label="Voltar">
+                    <span>←</span>
+                </button>
+                <div>
+                    <h2 class="screen-title">Agendamento</h2>
+                    <p class="screen-sub">Preencha os dados abaixo</p>
+                </div>
             </header>
-            <div class="form-container">
-                <div class="input-field">
-                    <label for="input-name">Nome do Cliente</label>
-                    <input type="text" id="input-name" placeholder="Ex: João Silva">
-                </div>
-                <div class="input-field">
-                    <label for="input-data">Data da Reserva</label>
-                    <input type="date" id="input-data" onchange="updateAvailableSlots()">
-                </div>
-                <div class="input-field">
-                    <label for="input-servico">Tipo de Corte</label>
-                    <select id="input-servico">
-                        <option value="Haircut">Regular Haircut</option>
-                        <option value="Beard">Beard Trimming</option>
-                        <option value="Combo">Premium Combo</option>
-                    </select>
-                </div>
-                <div class="input-field">
-                    <label>Horários Disponíveis</label>
-                    <div class="time-slots" id="time-slots-container"></div>
+
+            <div class="form-scroll">
+                <div class="form-container">
+
+                    <div class="input-field">
+                        <label for="input-name">Seu Nome</label>
+                        <input type="text" id="input-name" placeholder="Ex: Carlos Oliveira" autocomplete="off">
+                    </div>
+
+                    <div class="input-field">
+                        <label for="input-data">Data</label>
+                        <input type="date" id="input-data" onchange="updateAvailableSlots()">
+                    </div>
+
+                    <div class="input-field">
+                        <label>Serviço</label>
+                        <div class="service-grid">
+                            <button class="service-card active" data-service="Corte" onclick="selectService(this)">
+                                <span class="service-icon">✂</span>
+                                <span class="service-name">Corte</span>
+                                <span class="service-price">R$ 35</span>
+                            </button>
+                            <button class="service-card" data-service="Barba" onclick="selectService(this)">
+                                <span class="service-icon">🪒</span>
+                                <span class="service-name">Barba</span>
+                                <span class="service-price">R$ 25</span>
+                            </button>
+                            <button class="service-card" data-service="Combo" onclick="selectService(this)">
+                                <span class="service-icon">✦</span>
+                                <span class="service-name">Combo</span>
+                                <span class="service-price">R$ 55</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="input-field" id="slots-section" style="display:none">
+                        <label>Horário Disponível</label>
+                        <div class="time-slots" id="time-slots-container"></div>
+                    </div>
+
                 </div>
             </div>
-            <button class="btn-main" onclick="finish()">Confirm Order</button>
+
+            <div class="btn-area">
+                <button id="btn-confirm" class="btn-main" onclick="finish()">
+                    <span class="btn-text">Confirmar Agendamento</span>
+                    <span class="btn-spinner" style="display:none"></span>
+                </button>
+            </div>
         </section>
+
+        <!-- ===== TELA 3: SUCESSO ===== -->
+        <section id="screen-success" class="screen">
+            <div class="success-content">
+                <div class="success-icon">✓</div>
+                <h2 class="success-title">Confirmado!</h2>
+                <p class="success-msg">Seu agendamento foi realizado com sucesso. Te esperamos!</p>
+                <div class="success-details" id="success-details"></div>
+                <button class="btn-main" onclick="resetApp()">Novo Agendamento</button>
+            </div>
+        </section>
+
     </div>
 
-    <script src="js/navigation.js"></script>
     <script src="js/scheduler.js"></script>
+    <script src="js/navigation.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

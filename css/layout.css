@@ -1,61 +1,118 @@
-/* Centralização Total da Welcome Page */
+/* ================================================
+   LAYOUT.CSS – Welcome Page & Estruturas de Layout
+   ================================================ */
+
+/* ---- Welcome Screen ---- */
+#screen-welcome {
+    background:
+        radial-gradient(ellipse 100% 60% at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 65%),
+        linear-gradient(180deg, #141414 0%, #0e0e0e 100%);
+}
+
 .welcome-content {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly; /* Distribui espaço entre os blocos */
+    justify-content: space-between;
     align-items: center;
     height: 100%;
+    padding: 52px 28px 36px;
     text-align: center;
 }
 
-.brand-section h1 { font-size: 1.8rem; margin-top: 10px; }
-.tagline { color: var(--text-gray); font-size: 0.9rem; }
+/* ---- Logo ---- */
+.logo-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    animation: fadeUp 0.7s ease both;
+}
 
-/* Card de Informações Extras */
+.logo-icon {
+    font-size: 2rem;
+    color: var(--gold);
+    animation: pulse-gold 3s ease infinite;
+    line-height: 1;
+}
+
+@keyframes pulse-gold {
+    0%, 100% { text-shadow: 0 0 8px rgba(201,168,76,0.4); }
+    50%       { text-shadow: 0 0 24px rgba(201,168,76,0.9); }
+}
+
+.brand-title {
+    font-family: var(--font-display);
+    font-size: 3.2rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    letter-spacing: 0.12em;
+    line-height: 1;
+}
+
+.brand-tagline {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 4px;
+}
+
+/* ---- Decorative line under logo ---- */
+.logo-area::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin-top: 6px;
+}
+
+/* ---- Info Card ---- */
 .info-card {
-    background: #fdfaf7;
-    padding: 20px;
-    border-radius: 20px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-lg);
+    padding: 20px 22px;
     width: 100%;
-    border: 1px dashed #d4a373;
+    animation: fadeUp 0.7s 0.15s ease both;
 }
 
 .info-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    font-size: 0.85rem;
-    color: var(--text-main);
+    gap: 12px;
+    font-size: 0.83rem;
+    color: var(--text-secondary);
+    padding: 7px 0;
 }
 
-.info-item:last-child { margin-bottom: 0; }
-
-/* Formulário e Inputs */
-.form-container { display: flex; flex-direction: column; gap: 12px; width: 100%; }
-.input-field { display: flex; flex-direction: column; text-align: left; }
-.input-field label { font-size: 0.8rem; font-weight: 600; margin-bottom: 4px; }
-.input-field input, .input-field select { padding: 12px; border-radius: 12px; border: 1px solid #eee; }
-
-/* Cards de Barbeiros */
-.card {
-    background: white; border-radius: 20px; padding: 12px;
-    display: flex; align-items: center; width: 100%; margin-bottom: 12px;
-    border: 1px solid #f0f0f0; cursor: pointer;
+.info-item + .info-item {
+    border-top: 1px solid var(--border);
 }
-.card img { width: 55px; height: 55px; border-radius: 50%; margin-right: 15px; }
 
-/* Grid de Horários */
-.time-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.time-slot {
-    background: #f8f9fa; padding: 10px; border-radius: 10px;
-    text-align: center; font-size: 0.8rem; border: 1px solid #eee;
+.info-icon {
+    color: var(--gold);
+    font-size: 0.6rem;
+    flex-shrink: 0;
 }
-.time-slot.active { background: var(--primary); color: white; }
 
-/* Botão Principal */
-.btn-main {
-    background: var(--primary); color: white; border: none;
-    padding: 16px; border-radius: 16px; font-weight: bold;
-    width: 100%; cursor: pointer;
+/* ---- Welcome btn area ---- */
+#screen-welcome .btn-main {
+    animation: fadeUp 0.7s 0.28s ease both;
+}
+
+/* ---- Animações gerais ---- */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ---- Success screen bg ---- */
+#screen-success {
+    background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(82,196,122,0.06) 0%, transparent 60%),
+        var(--bg-app);
 }
