@@ -3,7 +3,7 @@
  * Comunicação com o Google Apps Script (Google Sheets).
  */
 const API_CONFIG = {
-    url: 'https://script.google.com/macros/s/AKfycbz6Ti9OU9k7gBttk3lOvO-JmaXI5kGXQPY3wyc6oJAEWpdO6X9yA8Xw26fWcR9crP0a/exec'
+    url: 'https://script.google.com/macros/s/AKfycbyVkZ2XKMR7dRY9VnWtBGdx5m0I1Ks0gTp6bGLEUZlIZxKsWGyEHxx6T05WwQK4ceAb/exec'
 };
 
 /**

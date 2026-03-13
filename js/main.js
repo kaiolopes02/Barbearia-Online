@@ -60,6 +60,16 @@ async function updateAvailableSlots() {
 
     if (!inputData?.value) return;
 
+    // Bloqueia Domingos (getDay() === 0)
+    const [y, m, d] = inputData.value.split('-').map(Number);
+    const diaSemana = new Date(y, m - 1, d).getDay();
+    if (diaSemana === 0) {
+        section.style.display = 'flex';
+        setSlotMessage('full', '❌ Não abrimos aos Domingos. Escolha outro dia!');
+        currentBooking.time = '';
+        return;
+    }
+
     currentBooking.date = inputData.value;
     currentBooking.time = ''; // reseta horário escolhido
 
